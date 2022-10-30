@@ -1,15 +1,15 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `AejiZone`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `전애지`,
+      summary: `안녕하세요. 웹 프론트엔드 개발자입니다.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `전문성을 강화하기 위해 부족한 지식을 채우고, 그 과정에서 발견한 인사이트를 공유합니다.
+  학습한 내용을 기록하고 공유하면서 문제를 끝까지 파고들 동력을 키우고 있습니다.`,
     siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
-    social: {
-      twitter: `kylemathews`,
-    },
+    social: {},
+    github: `https://github.com/AEJIJEON`,
   },
   plugins: [
     `gatsby-plugin-image`,
