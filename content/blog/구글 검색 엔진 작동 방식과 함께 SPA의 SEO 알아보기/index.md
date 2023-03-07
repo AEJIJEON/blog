@@ -13,11 +13,11 @@ description: "구글 검색 엔진 작동 방식과 함께 SPA의 SEO 알아보�
 ![Google 검색 엔진 작동 방식](./google_search_engine_process.png)
 구글 검색은 크게 ‘Crawling’, ‘Indexing’, ‘Serving’ 세 단계로 작동합니다.
 
-> **Crawling**
-> 크롤러라는 자동화된 프로그램을 사용하여 인터넷에서 찾은 페이지로부터 텍스트, 이미지, 동영상을 다운로드
-> **Indexing**
-> 페이지의 텍스트, 이미지, 동영상 파일을 분석하고 대규모 데이터베이스인 Google 색인에 이 정보를 저장
-> **Serving**
+> **Crawling**  
+> 크롤러라는 자동화된 프로그램을 사용하여 인터넷에서 찾은 페이지로부터 텍스트, 이미지, 동영상을 다운로드  
+> **Indexing**  
+> 페이지의 텍스트, 이미지, 동영상 파일을 분석하고 대규모 데이터베이스인 Google 색인에 이 정보를 저장  
+> **Serving**  
 > 사용자가 구글에서 검색을 하면 구글은 사용자의 검색어와 관련된 정보를 반환
 
 각 단계에 대해 자세히 살펴보겠습니다.
@@ -50,8 +50,8 @@ description: "구글 검색 엔진 작동 방식과 함께 SPA의 SEO 알아보�
 
 canonical page는 검색 결과에 표시될 수 있는 페이지입니다. 하나의 페이지를 여러 URL로 액세스할 수 있거나 여러 기기 유형을 지원, 서로 다른 페이지에 유사한 콘텐츠가 있는 경우 Google은 이러한 페이지를 같은 페이지의 중복 버전으로 간주하고, URL 중 하나를 표준 버전으로 선택하여 크롤링합니다.
 
-![중복 페이지가 발생하는 예시1](./duplicated_page_example_1.jpg)
-![중복 페이지가 발생하는 예시2](./duplicated_page_example_2.jpg)
+![중복 페이지가 발생하는 예시1](./duplicated_page_example_1.png)
+![중복 페이지가 발생하는 예시2](./duplicated_page_example_2.png)
 하나의 페이지를 path와 query string 모두 사용해서 접근이 가능하거나(예시1) 모바일, 데스크탑 등의 여러 기기 유형을 지원하는 경우(예시2) 중복 페이지가 발생하게 됩니다.
 인덱싱 과정에서 Google은 canonical page를 정하기 위해 먼저 인터넷에서 찾은 비슷한 콘텐츠의 페이지를 그룹으로 묶은 다음(클러스터링 작업) 그룹을 가장 잘 대표하는 페이지를 선택합니다. 웹사이트 소유자가 어떤 URL이 표준 버전인지 Google에 분명하게 알리지 않으면 Google이 사용자 대신 표준 버전을 선택하거나 두 페이지의 중요도를 동일하게 취급하기도 합니다. 그로 인해 원하지 않은 url이 검색 결과에 노출되거나, 같은 컨텐츠의 중복 페이지의 크롤링으로 인해 낭비가 발생하므로 canonical page를 직접 설정해주어 Googlebot이 사이트를 최대한 활용하도록 하는게 좋습니다.
 또한, 인덱싱 과정에서는 페이지의 언어, 콘텐츠가 속하는 국가, 페이지의 사용성 과 같은 신호를 수집하며, 이는 검색결과에 페이지를 게재하는 다음 단계에서 사용될 수 있습니다.
@@ -63,7 +63,7 @@ canonical page와 해당 클러스터에 관해 수집한 정보는 수천 대�
 
 # 2. Googlebot의 SPA 크롤링
 
-![Googlebot의 spa 크롤링](./spa_crawling_goolebot.jpg)
+![Googlebot의 spa 크롤링](./spa_crawling_goolebot.png)
 Googlebot은 html 소스코드를 분석하는 과정에서 페이지 렌더링 여부를 결정합니다. 페이지가 동적으로 생성되는지, JavaScript나 Ajax를 사용하는지, 그리고 페이지의 내용이 얼마나 많은지 등이 판단 기준이 됩니다. 렌더링 할 페이지는 렌더 큐에 추가됩니다. spa는 하나의 HTML 페이지 안에서 JavaScript를 이용하여 페이지의 모든 내용을 동적으로 로드하는 어플리케이션이기 때문에, static HTML pages와 다르게 페이지를 렌더링하는 과정이 일어납니다. 구글 엔진에서는 headless 브라우저인 Chromium 사용해서 js를 실행, ajax 호출하는 단계 수행하여 페이지를 렌더링하고, 렌더링 된 HTML을 분석합니다.
 
 # 3. SPA에서 SEO 이슈
@@ -78,12 +78,12 @@ Googlebot이 페이지를 제대로 렌더링하지 못해 HTML이 깨지거나 
 
 ## SSR(Server-Side Rendering)
 
-![SSR](./ssr.jpg)
+![SSR](./ssr.png)
 페이지 요청 시 spa 페이지를 서버에서 클라이언트로 보내기 전에 미리 서버에서 렌더링하는 방법입니다. SSR는 해당 페이지의 렌더링 책임을 Googlebot이 아닌 서버에게 넘겨 봇이 htm l페이지를 파싱하고 색인화를 쉽게 가능하게 합니다.
 
 ## SSG(Static Site Generation)
 
-![SSG](./ssg.jpg)
+![SSG](./ssg.png)
 페이지 요청 전에 빌드 시점에 서버 측에서 사전에 페이지를 렌더링하고, 결과물을 HTML로 저장해 놓는 방법입니다. 검색 엔진이 URL을 요청하면 서버에서는 미리 렌더링 된 HTML 을 반환하여 SEO 문제 해결할 수 있습니다.
 
 ## SEO 친화적인 URL을 사용하기
