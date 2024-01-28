@@ -1,9 +1,8 @@
 ---
-title: web development secrets 2024 - section1
+title: Introduction(Ajax, XMLHttpRequest, Fetch)
 date: "2024-01-28T15:42:42.746Z"
 description: "web development secrets 2024 - section1 강의 내용 정리"
 ---
-# 섹션 1: Introduction
 
 ## AJAX
 
