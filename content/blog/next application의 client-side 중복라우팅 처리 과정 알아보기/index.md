@@ -1,7 +1,7 @@
 ---
 title: next application의 client-side 중복라우팅 처리 과정 알아보기
-date: "2023-10-19T15:42:42.746Z"
-description: "Next.js 애플리케이션에서 클라이언트 사이드 중복라우팅이 어떻게 처리되는지 살펴보기"
+date: "2024-10-19T15:42:42.746Z"
+description: "next application의 client-side 중복라우팅 처리 과정 알아보기"
 ---
 Next 애플리케이션(14 버전)에서 클라이언트 사이드 중복라우팅이 어떻게 처리되는지 살펴보겠습니다.
 next 애플리케이션에서 클라이언트 사이드 라우팅은 주로 세 가지 핵심 데이터 `appRouterState`, `actionQueue`, 그리고 `appRouter`에 의해 관리됩니다.
