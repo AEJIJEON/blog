@@ -1,11 +1,11 @@
 ---
-title: next application의 client-side 중복라우팅 처리 과정 알아보기
+title: Nextjs application의 client-side 중복라우팅 처리 과정 알아보기
 date: "2024-10-19T15:42:42.746Z"
 description: "next application의 client-side 중복라우팅 처리 과정 알아보기"
 ---
-Next.js 애플리케이션을 개발할 때, 클라이언트 측 라우팅 중 중복 라우팅이 발생하는 경우가 있습니다. 중복 라우팅은 특정 경로로 이동하는 도중에 다른 라우팅을 추가로 시도하는 것을 의미합니다. 이러한 상황이 발생하면 모든 라우팅이 의도한 대로 완료되지 않을 수 있습니다. 이 글에서는 중복 라우팅이 Next.js에서 어떻게 발생하고 처리되는지에 대해 집중적으로 살펴보겠습니다.
+Next.js(14) 애플리케이션을 개발할 때, client-side 라우팅 중 중복 라우팅이 발생할 수 있습니다. 여기서 `client-side 라우팅`이란 Link 컴포넌트나 useRouter 훅을 이용한 라우팅을 의미하며, `중복 라우팅`은 라우팅 처리 도중 다른 라우팅을 추가로 시도하는 경우를 말합니다.이러한 상황이 발생하면 모든 라우팅이 의도한 대로 완료되지 않을 수 있습니다. 이 글에서는 중복 라우팅이 Next.js에서 어떻게 처리되는지에 대해 집중적으로 살펴보겠습니다.
 
-## 라우팅 관련 핵심 데이터
+# 라우팅 관련 핵심 데이터
 next 애플리케이션에서 클라이언트 사이드 라우팅은 주로 세 가지 핵심 데이터 `appRouterState`, `actionQueue`, 그리고 `appRouter`에 의해 관리됩니다.
 
 ## 1. appRouterState
@@ -160,7 +160,7 @@ const appRouter = {
     
 
 다음으로, `actionQueue.dispatch`에서 수행되는 두 번째 작업을 좀 더 살펴보겠습니다.
-## actionQueue.dispatch
+# actionQueue.dispatch
 **queue가 비어있는 경우,** 새로운 action node를 추가한 즉시 라우팅을 수행합니다.
 
 ![Queue가 비어있는 경우](./queue-empty.png)
@@ -251,3 +251,7 @@ const actionQueue: AppRouterActionQueue = {
 };
 ```
 결론적으로, Next.js에서 라우팅 작업은 일반적으로 순차적으로 처리되지만, Navigation 작업은 항상 최우선으로 실행됩니다. 이로 인해 실행 중이거나 대기 중인 작업들이 취소되고, 새로운 Navigation이 즉시 수행됩니다. 중복 라우팅 상황에서도 이러한 원칙을 고려하여 라우팅을 처리하면 애플리케이션이 의도한 대로 안정적으로 동작할 수 있습니다.
+
+# 참고 자료
+
+- [https://github.com/vercel/next.js/tree/main](https://github.com/vercel/next.js/tree/main)
