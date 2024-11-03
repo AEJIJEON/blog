@@ -1,5 +1,5 @@
 ---
-title: React에서 Lazy Initialization으로 불필요한 반복 작업 줄이기
+title: React에서 Lazy Initialization을 고려해야 하는 이유
 date: "2024-11-02T15:42:42.746Z"
 description: "lazy initialization이 무엇인지, React에서 어떻게 활용할 수 있는지, 그리고 이를 적용하여 문제를 해결하는 과정을 살펴보겠습니다."
 ---
@@ -17,7 +17,7 @@ function Component(){
 }
 ```
 
-이 코드에서 문제가 발생할 수 있을까요?
+이 코드에서 어떤 문제가 발생할 수 있을까요?
 
 Promise가 `resolve`된 후에도 `savePromise`에 접근하면 계속 `pending` 상태가 유지되는 이슈가 생깁니다. 원인은 **모든 렌더링마다** `new Promise(...)`가 호출되어 `saveResolve`가 매번 새로운 `resolve` 함수를 할당받기 때문입니다. 이 문제를 해결하기 위해 `lazy initialization`을 적용했습니다. 이번 글에서는 lazy initialization이 무엇인지, React에서 어떻게 활용할 수 있는지, 그리고 이를 적용하여 문제를 해결하는 과정을 살펴보겠습니다.
 
@@ -155,7 +155,7 @@ function Component() {
 
 이제 `savePromise`는 초기 렌더링 시에만 생성되며, 그 이후에는 생성된 `resolve` 함수가 유지됩니다. lazy initialization을 적용함으로써 불필요한 `promise` 생성을 방지하고, 필요한 시점에서만 초기화되는 구조를 갖출 수 있었습니다.
 
-정리하면, Lazy initialization을 적절히 사용하면 초기화 시점을 효과적으로 지연시켜 성능을 최적화할 수 있으며, 특히 React 컴포넌트가 여러 번 렌더링될 때 불필요한 리소스 낭비를 줄일 수 있습니다. 이 기법은 상태 관리, ref 활용, 메모리 관리 등 다양한 상황에서 유용하게 적용될 수 있으니, 코드를 개선할 때 고려해보면 좋을 것 같습니다.
+정리하면, Lazy initialization을 적절히 사용하면 성능을 최적화할 수 있을 뿐만 아니라 불필요한 반복 작업에서 발생할 수 있는 문제를 사전에 방지할 수 있기 때문에 코드를 개선할 때 고려해보면 좋을 것 같습니다.
 
 ## 참고 자료
 - [https://ko.wikipedia.org/wiki/지연된_초기화](https://ko.wikipedia.org/wiki/%EC%A7%80%EC%97%B0%EB%90%9C_%EC%B4%88%EA%B8%B0%ED%99%94)
